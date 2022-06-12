@@ -49,8 +49,8 @@ public abstract class Unit extends Tile {
     protected void battle(Unit attacker){
         int damage = attacker.attack() - this.defend();
         if (damage > 0)
-            this.helthPool -= damage;
-        if (this.helthPool <= 0)
+            this.helthAmount -= damage;
+        if (this.helthAmount <= 0)
             onDeath();
 
     }

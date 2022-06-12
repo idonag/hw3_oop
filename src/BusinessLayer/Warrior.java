@@ -30,4 +30,9 @@ public class Warrior extends Player{
             remainingCoolDown--;
         }
     }
+
+    @Override
+    public void accept(Unit unit) {
+
+    }
 }

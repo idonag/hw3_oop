@@ -17,7 +17,7 @@ public class Board {
 
     public Tile get(int x, int y) {
         for(Tile t : tiles){
-            if (t.getPosition().equals(new Point(x, y))){
+            if (t.getPosition().equals(Position.positionAt(x,y))){
                 return t;
             }
         }

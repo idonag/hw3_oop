@@ -25,4 +25,13 @@ public class Rogue extends Player{
         currentEnergy = Math.min(currentEnergy + 10, 100);
     }
 
+    @Override
+    public void accept(Unit unit) {
+
+    }
+
+    @Override
+    public void call(Enemy e) {
+
+    }
 }

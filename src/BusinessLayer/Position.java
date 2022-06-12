@@ -13,4 +13,7 @@ public class Position {
     public int compareTo(Position position) {
         throw new IllegalArgumentException("not implemented yet");
     }
+    public static Position positionAt (int x, int y){
+        return new Position(x,y);
+    }
 }

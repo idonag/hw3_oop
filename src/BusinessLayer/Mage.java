@@ -34,4 +34,14 @@ public class Mage extends Player{
     public void gameTick() {
         currentMana = Math.min(manaPool,currentMana + playerLevel);
     }
+
+    @Override
+    public void accept(Unit unit) {
+
+    }
+
+    @Override
+    public void call(Enemy e) {
+
+    }
 }

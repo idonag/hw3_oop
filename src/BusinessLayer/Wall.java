@@ -1,10 +1,8 @@
 package BusinessLayer;
 
-import java.awt.*;
-
-public class Empty extends Tile{
-    public Empty(Position p){
-        super('.');
+public class Wall extends Tile{
+    public Wall(Position p){
+        super('#');
         setPosition(p);
     }
 

@@ -3,8 +3,8 @@ package BusinessLayer;
 public class Rogue extends Player{
     private Integer specialAbilityCost;
     private Integer currentEnergy;
-    public Rogue (Character c, String name, Integer helthPool, Integer attackPoints, Integer defensePoints,Integer specialAbilityCost){
-        super(c, name,  helthPool, attackPoints,  defensePoints);
+    public Rogue (String name, Integer helthPool, Integer attackPoints, Integer defensePoints,Integer specialAbilityCost){
+        super(name,  helthPool, attackPoints,  defensePoints);
         this.specialAbilityCost = specialAbilityCost;
         currentEnergy = 100;
     }

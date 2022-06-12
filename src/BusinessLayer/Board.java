@@ -26,7 +26,7 @@ public class Board {
 
     public void remove(Enemy e) {
         tiles.remove(e);
-        Point p = e.getPosition();
+        Position p = e.getPosition();
         tiles.add(new Empty(p));
     }
 

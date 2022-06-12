@@ -22,7 +22,7 @@ public abstract class Unit extends Tile {
 
     }
 
-    protected void initialize(Point p)//MessageCallback messageCallback
+    protected void initialize(Position p)//MessageCallback messageCallback
     {
         position = p;
     }

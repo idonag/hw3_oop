@@ -3,8 +3,8 @@ package BusinessLayer;
 public abstract class Player extends Unit implements EnemyDeathCallBack{
     protected Integer experience;
     protected Integer playerLevel;
-    public Player(Character c, String name, Integer helthPool, Integer attackPoints, Integer defensePoints){
-        super(c,name,helthPool,attackPoints,defensePoints);
+    public Player(String name, Integer helthPool, Integer attackPoints, Integer defensePoints){
+        super('@',name,helthPool,attackPoints,defensePoints);
         experience = 0;
         playerLevel = 1;
     }

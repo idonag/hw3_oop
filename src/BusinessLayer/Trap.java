@@ -28,4 +28,9 @@ public class Trap extends Enemy{
     public void processStep() {
 
     }
+
+    @Override
+    public void accept(Unit unit) {
+
+    }
 }

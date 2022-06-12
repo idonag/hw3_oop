@@ -3,8 +3,8 @@ package BusinessLayer;
 public class Warrior extends Player{
     private Integer abilityCoolDown;
     private Integer remainingCoolDown;
-    public Warrior(Character c, String name, Integer helthPool, Integer attackPoints, Integer defensePoints,Integer abilityCoolDown){
-        super(c,name,helthPool,attackPoints,defensePoints);
+    public Warrior(String name, Integer helthPool, Integer attackPoints, Integer defensePoints,Integer abilityCoolDown){
+        super(name,helthPool,attackPoints,defensePoints);
         this.abilityCoolDown = abilityCoolDown;
         remainingCoolDown = 0;
 

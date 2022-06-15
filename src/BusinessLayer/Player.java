@@ -9,8 +9,8 @@ public abstract class Player extends Unit implements EnemyDeathCallBack{
         playerLevel = 1;
     }
     public void levelUp(){
-        experience = experience + 50 * playerLevel;
-        playerLevel++;
+        experience = experience - 50 * playerLevel;
+        playerLevel++;  
         helthPool = helthPool + 10 * playerLevel;
         helthAmount = helthPool;
         attackPoints = attackPoints + 4 * playerLevel;

@@ -1,7 +1,9 @@
 package BusinessLayer;
 
-public abstract class Enemy extends Unit implements Observer {
+public abstract class Enemy extends Unit {
     protected Integer exprienceToGain;
+    protected EnemyDeathCallBack enemyDeathCallBack;
+    protected MessageCallBack messageCallBack;
     public Enemy(Character c, String name, Integer helthPool,Integer attackPoints, Integer defensePoints, Integer exprienceToGain){
         super(c,name,helthPool,attackPoints,defensePoints);
         this.exprienceToGain = exprienceToGain;
@@ -18,11 +20,22 @@ public abstract class Enemy extends Unit implements Observer {
 
     }
     public void onDeath() {
-        //update player's expirience and so on...
+        this.enemyDeathCallBack.call();
     }
     public void update(Unit u){
 
     }
 
+    @Override
+    public void accept(Unit unit) {
 
+    }
+
+    public void setEnemyDeathCallBack(EnemyDeathCallBack enemyDeathCallBack) {
+        this.enemyDeathCallBack = enemyDeathCallBack;
+    }
+
+    public void setMessageCallBack(MessageCallBack messageCallBack) {
+        this.messageCallBack = messageCallBack;
+    }
 }

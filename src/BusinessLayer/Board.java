@@ -29,7 +29,9 @@ public class Board {
         Position p = e.getPosition();
         tiles.add(new Empty(p));
     }
+    public void add(Tile t){
 
+    }
 
 //    public String toString() {
 //        tiles = tiles.stream().sorted().collect(Collectors.toList());

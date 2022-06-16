@@ -35,8 +35,4 @@ public class Monster extends Enemy{
 
     }
 
-    @Override
-    public void accept(Unit unit) {
-
-    }
 }

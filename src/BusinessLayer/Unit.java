@@ -7,18 +7,16 @@ import java.util.Random;
 
 public abstract class Unit extends Tile {
     protected String name;
-    protected Integer helthPool;
-    protected Integer helthAmount;
-    protected Integer attackPoints;
-    protected Integer defensePoints;
+    protected Resource health;
+    protected Resource attackPoints;
+    protected Resource defensePoints;
 
     public Unit(Character c, String name, Integer helthPool, Integer attackPoints, Integer defensePoints) {
         super(c);
         this.name = name;
-        this.helthPool = helthPool;
-        helthAmount = helthPool;
-        this.attackPoints = attackPoints;
-        this.defensePoints = defensePoints;
+        this.health = new Resource(helthPool,helthPool);
+        this.attackPoints = new Resource(attackPoints,attackPoints);
+        this.defensePoints = new Resource(defensePoints,defensePoints);
 
     }
 
@@ -28,46 +26,37 @@ public abstract class Unit extends Tile {
     }
     protected int attack(){
         Random random = new Random();
-        return random.nextInt(attackPoints);
+        return random.nextInt(attackPoints.resource);
     }
     protected int defend(){
         Random random = new Random();
-        return random.nextInt(defensePoints);
+        return random.nextInt(defensePoints.resource);
     }
     public abstract void onDeath();
     public abstract void processStep();
     public void interact(Tile t){
-
+        t.accept(this);
     }
-    public void visit(Unit u){
-
+    public void visit(Empty e){
+        position = e.position;
     }
+    public void visit(Wall w){
+    }
+
     public abstract void visit(Player p);
     public abstract void visit(Enemy e);
 
     // Combat against another unit.
-    protected void battle(Unit attacker){
-        int damage = attacker.attack() - this.defend();
+    protected void battle(Unit unit){
+        int damage = this.attack() - unit.defend();
         if (damage > 0)
-            this.helthAmount -= damage;
-        if (this.helthAmount <= 0)
-            onDeath();
+            unit.health.reduceAmount(damage);
+        if (unit.health.resource == 0)
+            unit.onDeath();
 
     }
     public String getName(){
         return name;
-    }
-    public Integer getHelthPool(){
-        return helthPool;
-    }
-    public Integer gethelthAnount(){
-        return helthAmount;
-    }
-    public Integer getattackPoints(){
-        return attackPoints;
-    }
-    public Integer getdefensePoints(){
-        return defensePoints;
     }
 
 

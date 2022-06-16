@@ -1,23 +1,31 @@
 package BusinessLayer;
 
-public abstract class Player extends Unit implements EnemyDeathCallBack{
-    protected Integer experience;
+import java.util.Scanner;
+
+public abstract class Player extends Unit{
+    protected Resource experience;
     protected Integer playerLevel;
+    protected MessageCallBack messageCallBack;
+
     public Player(String name, Integer helthPool, Integer attackPoints, Integer defensePoints){
         super('@',name,helthPool,attackPoints,defensePoints);
-        experience = 0;
+        experience = new Resource(0);
         playerLevel = 1;
     }
     public void levelUp(){
-        experience = experience - 50 * playerLevel;
-        playerLevel++;  
-        helthPool = helthPool + 10 * playerLevel;
-        helthAmount = helthPool;
-        attackPoints = attackPoints + 4 * playerLevel;
-        defensePoints = defensePoints + playerLevel;
+        experience.reduceAmount(50*playerLevel);
+        playerLevel++;
+        health.increaseMaxCapacitiy(10 * playerLevel);
+        health.increaseAmount(health.maxCapacity);
+        attackPoints.increaseAmount(4 * playerLevel);
+        defensePoints.increaseAmount(playerLevel);
     }
     public abstract void abilityCast();
-    public abstract void gameTick();
+    public void gameTick(){
+        Scanner sc = new Scanner(System.in);
+        String action = sc.nextLine();
+
+    }
 
     @Override
     public void onDeath() {
@@ -39,7 +47,21 @@ public abstract class Player extends Unit implements EnemyDeathCallBack{
 
     }
     public void EnemyDies(Enemy e){
-        experience += e.exprienceToGain;
+        experience.increaseAmount(e.exprienceToGain);
         this.setPosition(e.position);
+    }
+
+    @Override
+    public void accept(Unit unit) {
+        unit.visit(this);
+    }
+    public void onKeal(Enemy e){
+        this.experience.increaseAmount(e.exprienceToGain);
+        this.position = e.position;
+        e.onDeath();
+    }
+
+    public void setMessageCallBack(MessageCallBack messageCallBack) {
+        this.messageCallBack = messageCallBack;
     }
 }

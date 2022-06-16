@@ -44,13 +44,7 @@ public abstract class Player extends Unit{
 
     @Override
     public void visit(Player p) {
-
     }
-    public void EnemyDies(Enemy e){
-        experience.increaseAmount(e.exprienceToGain);
-        this.setPosition(e.position);
-    }
-
     @Override
     public void accept(Unit unit) {
         unit.visit(this);

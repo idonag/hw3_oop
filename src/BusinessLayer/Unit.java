@@ -10,6 +10,7 @@ public abstract class Unit extends Tile {
     protected Resource health;
     protected Resource attackPoints;
     protected Resource defensePoints;
+    protected MessageCallBack messageCallBack;
 
     public Unit(Character c, String name, Integer helthPool, Integer attackPoints, Integer defensePoints) {
         super(c);
@@ -17,6 +18,7 @@ public abstract class Unit extends Tile {
         this.health = new Resource(helthPool,helthPool);
         this.attackPoints = new Resource(attackPoints,attackPoints);
         this.defensePoints = new Resource(defensePoints,defensePoints);
+
 
     }
 
@@ -48,16 +50,18 @@ public abstract class Unit extends Tile {
 
     // Combat against another unit.
     protected void battle(Unit unit){
+        messageCallBack.send(String.format("%s engaged combat with %s \n %s \n %s",getName(),unit.getName(),describe(),unit.describe()));
         int damage = this.attack() - unit.defend();
         if (damage > 0)
             unit.health.reduceAmount(damage);
-        if (unit.health.resource == 0)
-            unit.onDeath();
+
 
     }
     public String getName(){
         return name;
     }
-
+    public String describe(){
+        return String.format("%s\t\tHealth: %s\t\tAttack: %d\t\tDefense: %d", getName(), health.resource, attackPoints.resource, defensePoints.resource);
+    }
 
 }

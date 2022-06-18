@@ -17,7 +17,9 @@ public abstract class Enemy extends Unit {
 
     @Override
     public void visit(Player p) {
-
+        battle(p);
+        if (p.health.resource <= 0)
+            p.onDeath();
     }
     public void onDeath() {
         this.enemyDeathCallBack.call();
@@ -28,7 +30,7 @@ public abstract class Enemy extends Unit {
 
     @Override
     public void accept(Unit unit) {
-
+        unit.visit(this);
     }
 
     public void setEnemyDeathCallBack(EnemyDeathCallBack enemyDeathCallBack) {

@@ -24,12 +24,15 @@ public abstract class Player extends Unit{
     public void gameTick(){
         Scanner sc = new Scanner(System.in);
         String action = sc.nextLine();
-
+        ///
+        ///
+        ///
+        /*this.interact();*/
     }
 
     @Override
     public void onDeath() {
-        tile = 'X';
+        //tile = 'X';
         //endGame
     }
 
@@ -39,7 +42,9 @@ public abstract class Player extends Unit{
     }
     @Override
     public void visit(Enemy e) {
-
+        battle(e);
+        if (e.health.resource <= 0)
+            onKeal(e);
     }
 
     @Override

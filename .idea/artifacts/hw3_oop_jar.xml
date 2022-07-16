@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="hw3_oop:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/hw3_oop_jar</output-path>
+    <root id="archive" name="hw3_oop.jar">
+      <element id="module-output" name="hw3_oop" />
+      <element id="module-source" name="hw3_oop" />
+    </root>
+  </artifact>
+</component>
